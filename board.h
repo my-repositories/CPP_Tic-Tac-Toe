@@ -6,16 +6,16 @@
 class Board
 {
 public:
-    enum { STATE_NEXT_STEP = -1, STATE_DRAW = 0, STATE_X_WINNER, STATE_O_WINNER};
-    enum { CELL_EMPTY  = 0, CELL_X, CELL_O };
+    enum STATE { STATE_NEXT_STEP = -1, STATE_DRAW = 0, STATE_X_WINNER, STATE_O_WINNER};
+    enum CELL { CELL_EMPTY  = 0, CELL_X, CELL_O };
 
     explicit Board(const int field_size = 3, const int win_streak = 3);
 
-    void ClearBoard() const;
-    char GameOver() const;
-    bool SetCell(int x, int y, char player) const;
+    void ClearBoard();
+    int GameOver() const;
+    bool SetCell(int x, int y, CELL player);
 
-    inline const char GetCell(int x, int y) const
+    inline CELL GetCell(int x, int y) const
     {
         return board[x][y];
     }
@@ -27,15 +27,15 @@ public:
 private:
     const int FIELD_SIZE;
     const int WIN_STREAK;
-    std::vector< std::vector<char> > board;
+    std::vector< std::vector<CELL> > board;
 
-    char CheckDraw() const;
-    char CheckWin(const Board *board, char(Board::*pCheck)(char) const) const;
+    int CheckDraw() const;
+    int CheckWin(const Board *board, int(Board::*pCheck)(int) const) const;
 
-    char CheckAntiDiagonal(char player) const;
-    char CheckDiagonal(char player) const;
-    char CheckVertical(char player) const;
-    char CheckHorizontal(char player) const;
+    int CheckAntiDiagonal(int player) const;
+    int CheckDiagonal(int player) const;
+    int CheckVertical(int player) const;
+    int CheckHorizontal(int player) const;
 };
 
 #endif // !BOARD_H
