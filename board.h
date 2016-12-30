@@ -27,7 +27,7 @@ public:
 private:
     const int FIELD_SIZE;
     const int WIN_STREAK;
-    mutable std::vector< std::vector<char> > board;
+    std::vector< std::vector<char> > board;
 
     char CheckDraw() const;
     char CheckWin(const Board *board, char(Board::*pCheck)(char) const) const;
