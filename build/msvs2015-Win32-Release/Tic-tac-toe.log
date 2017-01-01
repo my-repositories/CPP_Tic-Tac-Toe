@@ -1,0 +1,10 @@
+﻿  board.cpp
+  game_con.cpp
+  game_win.cpp
+  main.cpp
+  Ui.cpp
+  Generating code
+  All 221 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Tic-tac-toe.vcxproj -> D:\prog\cpp\projects\Tic-tac-toe\msvs2015\..\product\msvs2015-Win32-Release\Tic-tac-toe.exe
+  Tic-tac-toe.vcxproj -> ..\product\msvs2015-Win32-Release\Tic-tac-toe.pdb (Full PDB)
