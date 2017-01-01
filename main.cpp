@@ -1,14 +1,4 @@
-// CONSOLE (iostream + cstdlib)
-#define CONSOLE_GAME 0
-
-// QT (Cross-platform application framework)
-#define QT_GAME 1
-
-// WIN (Windows.h || gtk.h)
-#define WIN_GAME 2
-
-// Choose Your Destiny
-#define MY_GAME CON_GAME
+#include "settings.h"
 
 #if MY_GAME == CONSOLE_GAME
 #include "game_con.h"
