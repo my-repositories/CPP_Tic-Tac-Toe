@@ -13,5 +13,4 @@
 // Choose Your Destiny
 #define MY_GAME 2
 
-
 #endif // !SETTINGS_H
