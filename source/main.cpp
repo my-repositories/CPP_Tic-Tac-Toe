@@ -12,9 +12,27 @@
 #include "game_gtk.h"
 #endif
 
+#if MY_GAME != QT_GAME
+
 int main(int argc, char *argv[])
 {
     Game game;
     game.Start();
     return 0;
 }
+
+#else
+
+#include "game_qt.h"
+#include <QApplication>
+
+int main(int argc, char *argv[])
+{
+    QApplication app(argc, argv);
+    Game game;
+    game.Start();
+
+    return app.exec();
+}
+
+#endif
