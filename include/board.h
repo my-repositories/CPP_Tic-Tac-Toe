@@ -26,6 +26,10 @@ public:
     {
         return m_field_size;
     }
+    inline int GetWinStreak() const
+    {
+        return m_win_streak;
+    }
 
 private:
     int m_field_size;
