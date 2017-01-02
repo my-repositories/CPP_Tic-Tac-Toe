@@ -8,16 +8,7 @@
 Game::Game() : Ui()
 {
     setlocale(LC_ALL, "Russian");
-
-    int field_size = 3, win_streak = 3;
-    std::cout << "Размер поля: ";
-    std::cin >> field_size;
-
-    std::cout << "Количество соседних элементов: ";
-    std::cin >> win_streak;
-
-    m_board->SetFieldSize(field_size);
-    m_board->SetWinStreak(win_streak);
+    SetOptions();
 }
 
 Game::~Game(){}
@@ -30,10 +21,24 @@ void Game::Start()
     }
 }
 
-// Продолжить игру сначала или выйти
+// Р—Р°РґР°РЅРёРµ РЅР°СЃС‚СЂРѕРµРє РёРіСЂС‹
+void Game::SetOptions()
+{
+    int field_size = 3, win_streak = 3;
+    std::cout << "Р Р°Р·РјРµСЂ РїРѕР»СЏ: ";
+    std::cin >> field_size;
+
+    std::cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕСЃРµРґРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ: ";
+    std::cin >> win_streak;
+
+    m_board->SetFieldSize(field_size);
+    m_board->SetWinStreak(win_streak);
+}
+
+// РџСЂРѕРґРѕР»Р¶РёС‚СЊ РёРіСЂСѓ СЃРЅР°С‡Р°Р»Р° РёР»Рё РІС‹Р№С‚Рё
 void Game::RestartGame(char *message)
 {
-    std::cout << message << " Желаете сыграть еще раз? 1/0: ";
+    std::cout << message << " Р–РµР»Р°РµС‚Рµ СЃС‹РіСЂР°С‚СЊ РµС‰Рµ СЂР°Р·? 1/0: ";
     std::cin.ignore();
     if (std::getchar() == '0')
         m_game_state = false;
@@ -44,14 +49,14 @@ void Game::RestartGame(char *message)
     }
 }
 
-// Запрос хода игрока
+// Р—Р°РїСЂРѕСЃ С…РѕРґР° РёРіСЂРѕРєР°
 void Game::GetStep(int &y, int &x)
 {
-    std::cout << "\n[Игрок " << m_player_step << "] Ваш ход (y; x): ";
+    std::cout << "\n[РРіСЂРѕРє " << m_player_step << "] Р’Р°С€ С…РѕРґ (y; x): ";
     std::cin >> y >> x;
 }
 
-// Отображение игрового поля
+// РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РёРіСЂРѕРІРѕРіРѕ РїРѕР»СЏ
 void Game::Display()
 {
     std::system("cls||clear");
