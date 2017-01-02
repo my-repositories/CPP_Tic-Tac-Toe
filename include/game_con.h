@@ -8,7 +8,7 @@ class Game : public Ui
 public:
     explicit Game();
     ~Game();
-    void Start();
+    void Start(int &argc, char **argv);
 
 private:
     void SetOptions();
