@@ -1,6 +1,6 @@
 #include "board.h"
 
-// Создание игрового поля NxN
+// РЎРѕР·РґР°РЅРёРµ РёРіСЂРѕРІРѕРіРѕ РїРѕР»СЏ NxN
 Board::Board(const int field_size, const int win_streak)
     :
     m_field_size(field_size),
@@ -8,7 +8,7 @@ Board::Board(const int field_size, const int win_streak)
     board(field_size, std::vector<CELL>(field_size))
 {}
 
-// Очищение игрвого поля
+// РћС‡РёС‰РµРЅРёРµ РёРіСЂРІРѕРіРѕ РїРѕР»СЏ
 void Board::ClearBoard()
 {
     for (int y = 0; y < m_field_size; y++)
@@ -16,17 +16,17 @@ void Board::ClearBoard()
             board[y][x] = CELL_EMPTY;
 }
 
-// Определение конца игры
+// РћРїСЂРµРґРµР»РµРЅРёРµ РєРѕРЅС†Р° РёРіСЂС‹
 int Board::GameOver() const
 {
     int state;
 
-    // Проверка на ничью
+    // РџСЂРѕРІРµСЂРєР° РЅР° РЅРёС‡СЊСЋ
     state = CheckDraw();
     if (state == STATE_DRAW)
         return STATE_DRAW;
 
-    // Массив функций с проверками на победу
+    // РњР°СЃСЃРёРІ С„СѓРЅРєС†РёР№ СЃ РїСЂРѕРІРµСЂРєР°РјРё РЅР° РїРѕР±РµРґСѓ
     static int(Board::*checks[])(int) const =
     {
         &Board::CheckAntiDiagonal,
@@ -35,7 +35,7 @@ int Board::GameOver() const
         &Board::CheckHorizontal
     };
 
-    // Проход по массиву функций
+    // РџСЂРѕС…РѕРґ РїРѕ РјР°СЃСЃРёРІСѓ С„СѓРЅРєС†РёР№
     for (int i = 0; i < 4; i++)
     {
         state = CheckWin(this, checks[i]);
@@ -46,14 +46,14 @@ int Board::GameOver() const
     return STATE_NEXT_STEP;
 }
 
-// Обработка хода игрока
+// РћР±СЂР°Р±РѕС‚РєР° С…РѕРґР° РёРіСЂРѕРєР°
 bool Board::SetCell(int x, int y, CELL player)
 {
-    // Валидация координат
+    // Р’Р°Р»РёРґР°С†РёСЏ РєРѕРѕСЂРґРёРЅР°С‚
     if (x < 0 || y < 0 || x >= m_field_size || y >= m_field_size)
         return false;
 
-    // Если ячейка занята
+    // Р•СЃР»Рё СЏС‡РµР№РєР° Р·Р°РЅСЏС‚Р°
     if (board[x][y] == CELL_O || board[x][y] == CELL_X)
         return false;
 
@@ -61,10 +61,10 @@ bool Board::SetCell(int x, int y, CELL player)
     return true;
 }
 
-// Установка размера игрового поля
+// РЈСЃС‚Р°РЅРѕРІРєР° СЂР°Р·РјРµСЂР° РёРіСЂРѕРІРѕРіРѕ РїРѕР»СЏ
 bool Board::SetFieldSize(int field_size)
 {
-    // Валидация координат
+    // Р’Р°Р»РёРґР°С†РёСЏ РєРѕРѕСЂРґРёРЅР°С‚
     if (field_size < 2 || field_size > 20)
         return false;
 
@@ -73,10 +73,10 @@ bool Board::SetFieldSize(int field_size)
     return true;
 }
 
-// Задание выигрышной комбинации (сколько клеток в ряд)
+// Р—Р°РґР°РЅРёРµ РІС‹РёРіСЂС‹С€РЅРѕР№ РєРѕРјР±РёРЅР°С†РёРё (СЃРєРѕР»СЊРєРѕ РєР»РµС‚РѕРє РІ СЂСЏРґ)
 bool Board::SetWinStreak(int win_streak)
 {
-    // Валидация координат
+    // Р’Р°Р»РёРґР°С†РёСЏ РєРѕРѕСЂРґРёРЅР°С‚
     if (win_streak < 2 || win_streak > 20)
         return false;
 
@@ -84,7 +84,7 @@ bool Board::SetWinStreak(int win_streak)
     return true;
 }
 
-// Изменение размеров игрового поля
+// РР·РјРµРЅРµРЅРёРµ СЂР°Р·РјРµСЂРѕРІ РёРіСЂРѕРІРѕРіРѕ РїРѕР»СЏ
 void Board::ResizeBoard()
 {
     board.resize(m_field_size);
@@ -94,10 +94,10 @@ void Board::ResizeBoard()
     }
 }
 
-// Определение ничьей
+// РћРїСЂРµРґРµР»РµРЅРёРµ РЅРёС‡СЊРµР№
 int Board::CheckDraw() const
 {
-    // Ищем хотя бы 1 пустую ячейку
+    // РС‰РµРј С…РѕС‚СЏ Р±С‹ 1 РїСѓСЃС‚СѓСЋ СЏС‡РµР№РєСѓ
     for (int y = 0; y < m_field_size; y++)
     {
         for (int x = 0; x < m_field_size; x++)
@@ -110,13 +110,13 @@ int Board::CheckDraw() const
     return STATE_DRAW;
 }
 
-// Определение победителя
+// РћРїСЂРµРґРµР»РµРЅРёРµ РїРѕР±РµРґРёС‚РµР»СЏ
 int Board::CheckWin(const Board *board, int(Board::*pCheck)(int) const) const
 {
     int state;
 
-    // Проход по полю первым игроком (player = 1)
-    // Затем вторым игроком (player = 2)
+    // РџСЂРѕС…РѕРґ РїРѕ РїРѕР»СЋ РїРµСЂРІС‹Рј РёРіСЂРѕРєРѕРј (player = 1)
+    // Р—Р°С‚РµРј РІС‚РѕСЂС‹Рј РёРіСЂРѕРєРѕРј (player = 2)
     for (int player = 1; player < 3; player++)
     {
         state = (board->*pCheck)(player);
@@ -127,7 +127,7 @@ int Board::CheckWin(const Board *board, int(Board::*pCheck)(int) const) const
     return STATE_NEXT_STEP;
 }
 
-// Проход по побочной диагонали
+// РџСЂРѕС…РѕРґ РїРѕ РїРѕР±РѕС‡РЅРѕР№ РґРёР°РіРѕРЅР°Р»Рё
 int Board::CheckAntiDiagonal(int player) const
 {
     int streak_count = 0;
@@ -145,7 +145,7 @@ int Board::CheckAntiDiagonal(int player) const
     return STATE_NEXT_STEP;
 }
 
-// Проход по главной диагонали
+// РџСЂРѕС…РѕРґ РїРѕ РіР»Р°РІРЅРѕР№ РґРёР°РіРѕРЅР°Р»Рё
 int Board::CheckDiagonal(int player) const
 {
     int streak_count = 0;
@@ -163,7 +163,7 @@ int Board::CheckDiagonal(int player) const
     return STATE_NEXT_STEP;
 }
 
-// Проход по стобцам
+// РџСЂРѕС…РѕРґ РїРѕ СЃС‚РѕР±С†Р°Рј
 int Board::CheckVertical(int player) const
 {
     for (int y = 0; y < m_field_size; y++)
@@ -184,7 +184,7 @@ int Board::CheckVertical(int player) const
     return STATE_NEXT_STEP;
 }
 
-// Проход по строкам
+// РџСЂРѕС…РѕРґ РїРѕ СЃС‚СЂРѕРєР°Рј
 int Board::CheckHorizontal(int player) const
 {
     for (int y = 0; y < m_field_size; y++)
