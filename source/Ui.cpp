@@ -17,7 +17,6 @@ void Ui::Update()
 {
     char* message;
 
-    Display();
     switch (m_board->GameOver())
     {
     case Board::STATE_DRAW:
@@ -30,7 +29,6 @@ void Ui::Update()
         message = "Нолики победили!";
         break;
     default:
-        Move();
         return;
     }
     
@@ -40,8 +38,6 @@ void Ui::Update()
 // Осуществление хода игроком
 void Ui::Move()
 {
-    GetStep(y, x);
-
     // Ход первого игрока
     // И если ход выполнен
     // То ход передается второму игроку
