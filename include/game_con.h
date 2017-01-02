@@ -13,7 +13,7 @@ public:
 private:
     void SetOptions();
     void RestartGame(char *message);
-    void GetStep(int &y, int &x);
+    void GetStep();
     void Display();
 };
 
