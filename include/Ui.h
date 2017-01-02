@@ -8,7 +8,7 @@ class Ui
 public:
     explicit Ui();
     virtual ~Ui();
-    virtual void Start() = 0;
+    virtual void Start(int &argc, char **argv) = 0;
 
 protected:
     bool m_game_state;
