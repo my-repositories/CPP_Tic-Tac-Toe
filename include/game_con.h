@@ -11,6 +11,7 @@ public:
     void Start();
 
 private:
+    void SetOptions();
     void RestartGame(char *message);
     void GetStep(int &y, int &x);
     void Display();
