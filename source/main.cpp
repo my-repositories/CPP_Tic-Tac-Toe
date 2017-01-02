@@ -15,6 +15,6 @@
 int main(int argc, char *argv[])
 {
     Game game;
-    game.Start(argc, argv);
+    game.Start();
     return 0;
 }
