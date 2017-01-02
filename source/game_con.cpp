@@ -13,7 +13,7 @@ Game::Game() : Ui()
 
 Game::~Game(){}
 
-void Game::Start()
+void Game::Start(int &argc, char **argv)
 {
     while (m_game_state)
     {
