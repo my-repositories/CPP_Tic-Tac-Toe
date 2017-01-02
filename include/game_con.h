@@ -6,7 +6,7 @@
 class Game : public Ui
 {
 public:
-    Game();
+    explicit Game();
     ~Game();
     void Start();
 
