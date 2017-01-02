@@ -6,7 +6,7 @@
 class Ui
 {
 public:
-    Ui();
+    explicit Ui();
     virtual ~Ui();
     virtual void Start() = 0;
 
