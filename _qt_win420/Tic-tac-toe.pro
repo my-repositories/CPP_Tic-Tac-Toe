@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-01-02T10:08:18
+# Project created by QtCreator 2017-01-02T12:15:30
 #
 #-------------------------------------------------
 
@@ -24,11 +24,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        game_qt.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += game_qt.h
 
-FORMS    += mainwindow.ui
+FORMS    += game_qt.ui
 
 Release:DESTDIR = ../../product/qt_win420-Release
 Release:OBJECTS_DIR = release/
