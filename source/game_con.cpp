@@ -17,6 +17,9 @@ void Game::Start()
 {
     while (m_game_state)
     {
+        Display();
+        GetStep();
+        Move();
         Update();
     }
 }
@@ -38,6 +41,7 @@ void Game::SetOptions()
 // Продолжить игру сначала или выйти
 void Game::RestartGame(char *message)
 {
+    Display();
     std::cout << message << " Желаете сыграть еще раз? 1/0: ";
     std::cin.ignore();
     if (std::getchar() == '0')
@@ -50,7 +54,7 @@ void Game::RestartGame(char *message)
 }
 
 // Запрос хода игрока
-void Game::GetStep(int &y, int &x)
+void Game::GetStep()
 {
     std::cout << "\n[Игрок " << m_player_step << "] Ваш ход (y; x): ";
     std::cin >> y >> x;
