@@ -17,6 +17,7 @@ protected:
 
     void Update();
     void Move();
+    virtual void SetOptions() = 0;
     virtual void RestartGame(char *message) = 0;
     virtual void GetStep(int &y, int &x) = 0;
     virtual void Display() = 0;
