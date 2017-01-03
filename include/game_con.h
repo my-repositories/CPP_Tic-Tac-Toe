@@ -1,9 +1,9 @@
 #ifndef GAME_CON_H
 #define GAME_CON_H
 
-#include "Ui.h"
+#include "../include/base_game.h"
 
-class Game : public Ui
+class Game : public BaseGame
 {
 public:
     explicit Game();
