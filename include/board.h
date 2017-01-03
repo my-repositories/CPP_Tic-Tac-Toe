@@ -18,9 +18,9 @@ public:
     bool SetWinStreak(int win_streak = 3);
     void ResizeBoard();
 
-    inline CELL GetCell(int x, int y) const
+    inline CELL GetCell(int y, int x) const
     {
-        return board[x][y];
+        return board[y][x];
     }
     inline int GetSize() const
     {
