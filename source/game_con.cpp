@@ -1,13 +1,12 @@
-#include "settings.h"
+#include "../include/settings.h"
 
 #if MY_GAME == CONSOLE_GAME
-#include "game_con.h"
+#include "../include/game_con.h"
 #include <iostream>
 #include <cstdlib>
 
-Game::Game() : Ui()
+Game::Game() : BaseGame()
 {
-    setlocale(LC_ALL, "Russian");
     SetOptions();
 }
 
@@ -24,25 +23,25 @@ void Game::Start()
     }
 }
 
-// Задание настроек игры
+// Ask Game Settings (Field size & Win streak)
 void Game::SetOptions()
 {
     int field_size = 3, win_streak = 3;
-    std::cout << "Размер поля: ";
+    std::cout << "Field size: ";
     std::cin >> field_size;
 
-    std::cout << "Количество соседних элементов: ";
+    std::cout << "Win streak: ";
     std::cin >> win_streak;
 
     m_board->SetFieldSize(field_size);
     m_board->SetWinStreak(win_streak);
 }
 
-// Продолжить игру сначала или выйти
+// Ask for Restart or Quit
 void Game::RestartGame(char *message)
 {
     Display();
-    std::cout << message << " Желаете сыграть еще раз? 1/0: ";
+    std::cout << message << " Play again? 1/0: ";
     std::cin.ignore();
     if (std::getchar() == '0')
         m_game_state = false;
@@ -53,24 +52,26 @@ void Game::RestartGame(char *message)
     }
 }
 
-// Запрос хода игрока
+// Ask for player step
 void Game::GetStep()
 {
-    std::cout << "\n[Игрок " << m_player_step << "] Ваш ход (y; x): ";
-    std::cin >> y >> x;
+    std::cout << "\n[Player " << m_player_step << "] your step (y; x): ";
+    std::cin >> m_y >> m_x;
+    --m_y;
+    --m_x;
 }
 
-// Отображение игрового поля
+// Display game table
 void Game::Display()
 {
     std::system("cls||clear");
 
     int size = m_board->GetSize();
-    for (y = 0; y < size; y++)
+    for (m_y = 0; m_y < size; m_y++)
     {
-        for (x = 0; x < size; x++)
+        for (m_x = 0; m_x < size; m_x++)
         {
-            switch (m_board->GetCell(x, y))
+            switch (m_board->GetCell(m_y, m_x))
             {
             case Board::CELL_X: std::cout << "X "; break;
             case Board::CELL_O: std::cout << "O "; break;
