@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QVector>
 #include <QPushButton>
+#include <Qlabel>
 #include "../include/base_game.h"
 
 namespace Ui {
@@ -24,14 +25,20 @@ public:
 
 private slots:
  void GetStep();
+ void SetOptions();
+ void ShowHelp();
+ void RestartGame(char *message = 0);
 
 private:
     int field_size, win_streak;
+    QLabel *label_step;
+    QLabel *stats;
+    QLabel *label_wincounter_x;
+    QLabel *label_wincounter_o;
+    //QPalette *palette;
     Ui::Game *ui;
     QVector< QVector<QPushButton*> > grid;
 
-    void SetOptions();
-    void RestartGame(char *message);
     void Display();
 };
 
