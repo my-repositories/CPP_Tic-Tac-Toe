@@ -15,6 +15,10 @@ Game::Game(QWidget *parent) :
     field_size(3), win_streak(3)
 {
     ui->setupUi(this);
+    ui->menuBar->addAction(tr("Restart"), this, SLOT(close()));
+    ui->menuBar->addAction(tr("Settings"), this, SLOT(close()));
+    ui->menuBar->addAction(tr("Help"), this, SLOT(close()));
+    ui->menuBar->addAction(tr("Quit"), this, SLOT(close()));
     SetOptions();
 }
 
@@ -26,10 +30,10 @@ Game::~Game()
 // Ask Game Settings (Field size & Win streak)
 void Game::SetOptions()
 {
-    field_size = QInputDialog::getInt(this, tr("Settings"),
+    field_size = QInputDialog::getInt(0, tr("Settings"),
                                      tr("Field size:"), 3, 2, 20, 1, nullptr);
-    win_streak = QInputDialog::getInt(this, tr("Settings"),
-                                     tr("Win Streak:"), 3, 2, 20, 1, nullptr);
+    win_streak = QInputDialog::getInt(0, tr("Settings"),
+                                     tr("Win Streak:"), 3, 2, field_size, 1, nullptr);
 
     m_board->SetFieldSize(field_size);
     m_board->SetWinStreak(win_streak);
@@ -39,6 +43,10 @@ void Game::SetOptions()
 void Game::Start()
 {
     show();
+    //this->setGeometry(QRect(QPoint(100, 100), QSize(500, 200)));
+    int window_width = 150 + 30 * field_size;
+    int window_height = window_width;
+    this->setFixedSize(window_width, window_height);
 
     //grid = QVector< QVector<QPushButton*> >(field_size);
     grid.resize(field_size);
@@ -50,7 +58,7 @@ void Game::Start()
         {
             QPushButton *btn = new QPushButton(" ", this);
             grid[m_y][m_x] = btn;
-            btn->setGeometry(QRect(QPoint(10+ m_x*30, 10 + m_y*30), QSize(30, 30)));
+            btn->setGeometry(QRect(QPoint(10+ m_x*30, 40 + m_y*30), QSize(30, 30)));
             btn->show();
             connect(btn, SIGNAL (released()), this, SLOT (GetStep()));
         }
