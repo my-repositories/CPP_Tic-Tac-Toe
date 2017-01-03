@@ -39,3 +39,15 @@ HEADERS  += \
         $${INC_DIR}/game_qt.h \
 
 FORMS    += game_qt.ui
+
+Release:DESTDIR = ../../product/qt_win420-Release
+Release:OBJECTS_DIR = .
+Release:MOC_DIR = .
+Release:RCC_DIR = .
+Release:UI_DIR = .
+
+Debug:DESTDIR = ../../product/qt_win420-Debug
+Debug:OBJECTS_DIR = .
+Debug:MOC_DIR = .
+Debug:RCC_DIR = .
+Debug:UI_DIR = .
