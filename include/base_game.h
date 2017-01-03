@@ -13,6 +13,7 @@ public:
 protected:
     bool m_game_state;
     int m_player_step, m_y, m_x;
+    int m_count_win_x, m_count_win_o;
     Board *m_board;
 
     void Update();
