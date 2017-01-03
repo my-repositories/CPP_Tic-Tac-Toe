@@ -2,6 +2,7 @@
 
 BaseGame::BaseGame()
 {
+    m_count_win_x = m_count_win_o = 0;
     m_game_state = true;
     m_player_step = 1;
     m_board = new Board();
@@ -24,14 +25,17 @@ void BaseGame::Update()
         break;
     case Board::STATE_X_WINNER:
         message = (char*)"X wins!";
+        ++m_count_win_x;
         break;
     case Board::STATE_O_WINNER:
         message = (char*)"O wins!";
+        ++m_count_win_o;
         break;
     default:
         return;
     }
     
+    m_game_state = false;
     RestartGame(message);
 }
 
