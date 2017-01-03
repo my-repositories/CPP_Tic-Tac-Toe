@@ -14,6 +14,6 @@
 #define SFML_GAME 3
 
 // Choose Your Destiny
-#define MY_GAME 2
+#define MY_GAME 0
 
 #endif // !SETTINGS_H
