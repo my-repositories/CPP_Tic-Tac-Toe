@@ -75,7 +75,7 @@ bool Board::SetFieldSize(int field_size)
 // Set win streak ( how much in a row )
 bool Board::SetWinStreak(int win_streak)
 {
-    if (win_streak < 2 || win_streak > 20)
+    if (win_streak < 2 || win_streak > 20 || win_streak > m_field_size)
         return false;
 
     m_win_streak = win_streak;
@@ -125,6 +125,35 @@ int Board::CheckWin(const Board *board, int(Board::*pCheck)(int) const) const
     return STATE_NEXT_STEP;
 }
 
+// Check Secondary diagonals
+int Board::CheckAntiDiagonal(int player) const
+{
+    int sz = m_field_size - 1;
+    int df = m_field_size - m_win_streak + 1;
+
+    for (int y = 0; y < df; y++)
+    {
+        int streak_count = 0;
+        for (int x = 0; x < df; x++)
+        {
+            for (int i = 0; i < m_win_streak; i++)
+            {
+                if (board[sz - i - y][i + x] == player)
+                    ++streak_count;
+                else
+                    streak_count = 0;
+
+                if (streak_count == m_win_streak)
+                    return player;
+            }
+        }
+    }
+
+    return STATE_NEXT_STEP;
+}
+
+// save backuyp
+#if 0
 // Check Secondary diagonal
 int Board::CheckAntiDiagonal(int player) const
 {
@@ -156,6 +185,33 @@ int Board::CheckDiagonal(int player) const
 
         if (streak_count == m_win_streak)
             return player;
+    }
+
+    return STATE_NEXT_STEP;
+}
+#endif
+
+// Check Main diagonals
+int Board::CheckDiagonal(int player) const
+{
+    int df = m_field_size - m_win_streak + 1;
+
+    for (int y = 0; y < df; y++)
+    {
+        int streak_count = 0;
+        for (int x = 0; x < df; x++)
+        {
+            for (int i = 0; i < m_win_streak; i++)
+            {
+                if (board[i + y][i + x] == player)
+                    ++streak_count;
+                else
+                    streak_count = 0;
+
+                if (streak_count == m_win_streak)
+                    return player;
+            }
+        }
     }
 
     return STATE_NEXT_STEP;
