@@ -7,6 +7,7 @@
 
 Game::Game() : BaseGame()
 {
+    std::system("title Tic-tac-toe");
     SetOptions();
 }
 
