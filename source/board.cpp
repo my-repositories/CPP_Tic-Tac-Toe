@@ -21,11 +21,6 @@ int Board::GameOver() const
 {
     int state;
 
-    // check for tie
-    state = CheckDraw();
-    if (state == STATE_DRAW)
-        return STATE_DRAW;
-
     // Array of check functions
     static int(Board::*checks[])(int) const =
     {
@@ -42,6 +37,11 @@ int Board::GameOver() const
         if (state == STATE_X_WINNER || state == STATE_O_WINNER)
             return state;
     }
+
+    // check for tie
+    state = CheckDraw();
+    if (state == STATE_DRAW)
+        return STATE_DRAW;
 
     return STATE_NEXT_STEP;
 }
