@@ -1,9 +1,0 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (..\build\msvs2015-Win32-Debug\) contains files shared from another project (Tic-tac-toe.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Ui.cpp
-  main.cpp
-  game_win.cpp
-  game_con.cpp
-  board.cpp
-  Generating Code...
-  Tic-tac-toe.vcxproj -> D:\prog\cpp\projects\Tic-tac-toe\msvs2015\..\product\msvs2015-Win32-Debug\Tic-tac-toe.exe
-  Tic-tac-toe.vcxproj -> ..\product\msvs2015-Win32-Debug\Tic-tac-toe.pdb (Full PDB)
