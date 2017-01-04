@@ -133,9 +133,9 @@ int Board::CheckAntiDiagonal(int player) const
 
     for (int y = 0; y < df; y++)
     {
-        int streak_count = 0;
         for (int x = 0; x < df; x++)
         {
+            int streak_count = 0;
             for (int i = 0; i < m_win_streak; i++)
             {
                 if (board[sz - i - y][i + x] == player)
@@ -198,9 +198,9 @@ int Board::CheckDiagonal(int player) const
 
     for (int y = 0; y < df; y++)
     {
-        int streak_count = 0;
         for (int x = 0; x < df; x++)
         {
+            int streak_count = 0;
             for (int i = 0; i < m_win_streak; i++)
             {
                 if (board[i + y][i + x] == player)
