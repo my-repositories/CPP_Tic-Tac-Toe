@@ -8,12 +8,12 @@ class Game : public BaseGame
 public:
     explicit Game();
     ~Game();
-    void Start();
+    void Start() override;
 
 private:
-    void SetOptions();
-    void RestartGame(char *message);
-    void GetStep();
+    void SetOptions() override;
+    void RestartGame(char *message) override;
+    void GetStep() override;
     void Display();
 };
 
