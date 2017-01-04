@@ -37,7 +37,7 @@ private:
     std::vector< std::vector<CELL> > board;
 
     int CheckDraw() const;
-    int CheckWin(const Board *board, int(Board::*pCheck)(int) const) const;
+    int CheckWin(int(Board::*pCheck)(int) const) const;
 
     int CheckAntiDiagonal(int player) const;
     int CheckDiagonal(int player) const;
