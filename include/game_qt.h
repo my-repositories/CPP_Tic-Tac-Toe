@@ -21,13 +21,13 @@ class Game
 public:
     explicit Game(QWidget *parent = 0);
     ~Game();
-    void Start();
+    void Start() override;
 
 private slots:
- void GetStep();
- void SetOptions();
+ void GetStep() override;
+ void SetOptions() override;
  void ShowHelp();
- void RestartGame(char *message = 0);
+ void RestartGame(char *message = 0) override;
 
 private:
     int field_size, win_streak;
