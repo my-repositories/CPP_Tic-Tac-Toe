@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QVector>
 #include <QPushButton>
-#include <Qlabel>
+#include <QLabel>
 #include "../include/base_game.h"
 
 namespace Ui {
