@@ -86,9 +86,9 @@ bool Board::SetWinStreak(int win_streak)
 void Board::ResizeBoard()
 {
     board.resize(m_field_size);
-    for (auto &it : board)
+    for (int i = 0; i < m_field_size; i++)
     {
-        it.resize(m_field_size);
+        board[i].resize(m_field_size);
     }
 }
 
