@@ -40,9 +40,9 @@ Game::~Game()
 void Game::SetOptions()
 {
     field_size = QInputDialog::getInt(0, tr("Settings"),
-                                     tr("Field size:"), 3, 2, 20, 1, nullptr);
+                                     tr("Field size:"), 3, 2, 20, 1, 0);
     win_streak = QInputDialog::getInt(0, tr("Settings"),
-                                     tr("Win Streak:"), 3, 2, field_size, 1, nullptr);
+                                     tr("Win Streak:"), 3, 2, field_size, 1, 0);
 
     m_board->SetFieldSize(field_size);
     m_board->SetWinStreak(win_streak);
