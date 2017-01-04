@@ -1,8 +1,0 @@
-﻿  Ui.cpp
-  main.cpp
-  game_win.cpp
-  game_con.cpp
-  board.cpp
-  Generating Code...
-C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(1191,5): warning MSB8012: TargetName(Tic-tac-toe) does not match the Linker's OutputFile property value ( Tic-tac-toe). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
-LINK : fatal error LNK1104: cannot open file '..\build\msvs2015-Win32-Debug\ board.obj'
