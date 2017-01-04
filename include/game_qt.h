@@ -35,7 +35,6 @@ private:
     QLabel *stats;
     QLabel *label_wincounter_x;
     QLabel *label_wincounter_o;
-    //QPalette *palette;
     Ui::Game *ui;
     QVector< QVector<QPushButton*> > grid;
 
