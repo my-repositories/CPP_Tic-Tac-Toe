@@ -8,11 +8,11 @@
 #include <QMessageBox>
 
 Game::Game(QWidget *parent) :
-    BaseGame(),
     QMainWindow(parent),
+    BaseGame(),
+    field_size(3), win_streak(3),
     ui(new Ui::Game),
-    grid(3, QVector<QPushButton*>(3)),
-    field_size(3), win_streak(3)
+    grid(3, QVector<QPushButton*>(3))
 {
     ui->setupUi(this);
     ui->menuBar->addAction(tr("Restart"), this, SLOT(RestartGame()));
@@ -22,7 +22,6 @@ Game::Game(QWidget *parent) :
     stats = new QLabel(this);
     label_wincounter_x = new QLabel(this);
     label_wincounter_o = new QLabel(this);
-    //palette = new QPalette();
     SetOptions();
 }
 
@@ -32,7 +31,6 @@ Game::~Game()
     delete stats;
     delete label_wincounter_o;
     delete label_wincounter_x;
-    //delete palette;
     delete ui;
 }
 
